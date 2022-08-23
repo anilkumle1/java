@@ -29,7 +29,7 @@
         stage(&apos;build docker image&apos;){
             steps{
                 script{
-                    sh &quot;docker build -t anilkumle/sample-testing:jenkinscheck .&quot;
+                    sh &quot;sudo docker build -t anilkumle/sample-testing:jenkinscheck .&quot;
                 }
             }
         }
@@ -37,9 +37,9 @@
             steps{
                 script{
                     withCredentials([string(credentialsId: &apos;dockerhub-pwd&apos;, variable: &apos;dockerhubpasswd&apos;)]) {
-                    sh &quot;docker login -u anilkumle -p ${dockerpasswd}&quot;
+                    sh &quot;sudo docker login -u anilkumle -p ${dockerhubpasswd}&quot;
 }
-                    sh &quot;docker push anilkumle/sample-testing:jenkinscheck&quot;
+                    sh &quot;sudo docker push anilkumle/sample-testing:jenkinscheck&quot;
                 }
             }
         }
